@@ -1,0 +1,40 @@
+
+<div class="modal-content">
+	<div class="modal-header">
+		<button class="close" data-dismiss="modal">&times;</button>
+		<h4 class="modal-title">管理管理员账户
+		</h4>
+	</div>
+	<div class="modal-body">
+		<table class="table table-striped" ng-hide="showErr" ng-init="showErr=false">
+			<thead>
+				<tr>
+					<th>账号</th>
+					<th>权限</th>
+					<th width="24%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="d in shareData.getall_user_data" ng-if="true">
+					<td>{{d.name}}</td>
+					<td>{{d.powertext}}</td>
+					<td>
+						<button type="button" class="btn btn-warning" ng-click="alertShow=!alertShow" ng-init="alertShow=false">
+							<span ng-hide="alertShow">删除</span>
+							<span ng-show="alertShow">再想想</span>
+						</button>
+						<button class="btn btn-danger" type="button" ng-show="alertShow" delete-admin data-admin="{{d}}" ng-click="delete()" ng-disabled="!shareData.loaded">
+							确定删除</button>							
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="alert alert-danger text-center" ng-show="showErr">
+			<button class="close" ng-click="showErr=false">&times;</button>
+			<h3>操作错误提示：{{DbError}}</h3>
+			<h1><button class="btn btn-default btn-lg" ng-click="showErr=false" type="button">知道了</button></h1>
+		</div>
+	</div>		
+</div>	
+
+

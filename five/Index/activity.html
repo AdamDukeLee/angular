@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="activityApp">
+<head>
+	<meta charset="UTF-8">
+	<title>社区活动</title>
+	<link rel="shortcut icon" href="logo.ico">
+	<link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/activity.css">
+</head>
+<style>
+	.header_nav .nav>li:first-of-type{
+		color: #812f2a;
+		font-weight: 800		
+	}
+</style>
+<body ng-controller="ItemController">
+<!-- 加载页头 -->
+	<div class="container" ng-include="'template/header.html'"></div>
+<!-- 面包屑导肮 -->
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="index.html">首页</a></li>
+			<li class="avtive">社区活动</li>
+		</ol>
+	</div>
+	<div class="container">
+		<div style="text-align: center;position: fixed;width: 300px;z-index: 2000;background-color: #333;left: 0;right: 0;top:0;bottom: 0;margin: auto;height: 250px;padding-top: 20px;opacity: 0.8;border-radius: 20px;" class="loading" ng-hide="loaded">
+			<img src="img/loading.gif" alt="">
+		</div>
+		<div class="well activity_item" ng-repeat="x in data">
+			<div class="row">
+				<div class="col-xs-8">
+					<h3>{{x.title}}</h3>
+					<p class="text-muted">{{x.time}}</p>
+					<p class="text-muted">{{x.addr}}</p>
+					<p class="text-muted">{{x.follow}}</p>
+					<p>
+						<button type="button" class="btn btn-danger" btn-sign data-toggle="modal" data-target="#getedModal">我要报名</button>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-default" btn-detail data-toggle="modal" data-target="#detailModal">查看详情</button>
+					</p>
+				</div>
+				<div class="col-xs-4">
+					<img ng-src="{{x.img}}" alt="" class="img-responsive">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer ng-include="'template/footer.html'"></footer>
+
+<!-- modal -->
+<div>
+<!-- 我要报名 -->
+	<div class="modal" id="getedModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">我要报名</h4>
+				</div>
+				<div class="modal-body">
+					<p>项目：{{data.get.title}}</p>
+					<div class="well">
+						<form class="form-horizontal" name="apply_f">
+							<div class="form-group">
+								<label for="" class="control-label col-xs-2">称呼：</label>
+								<div class="col-xs-9">
+									<input type="text" class="form-control" name="name" required 
+										 ng-maxlength="20" ng-model="post_form.name"
+									>
+									<div class="help-block" ng-messages="apply_f.name.$error" ng-if="apply_f.name.$dirty && apply_f.name.$touched && apply_f.name.$invalid">
+										<span ng-message="required">称呼必须填写</span>
+										<span ng-message="maxlength">称呼不可以超过20个字符</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="control-label col-xs-2">手机：</label>
+								<div class="col-xs-9">
+									<input type="text" class="form-control" ng-pattern="/^\d*$/" maxlength="11" minlength="11" ng-model="">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="" class="control-label col-xs-2">邮箱：</label>
+								<div class="col-xs-9">
+									<input type="text" class="form-control">
+								</div>
+							</div>
+						</form>						
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+<!-- 查看详情 -->
+	<div class="modal" id="detailModal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">查看详情</h4>
+				</div>
+				<div class="modal-body">
+					<div class="contianer-fluid">
+						<div class="row">
+							<div class="col-xs-9">
+								<h4>{{data.get.title}}</h4>
+								<p>{{data.get.time}}</p>
+								<p>{{data.get.addr}}</p>
+								<p>{{data.get.follow}}</p>
+							</div>
+							<div class="col-xs-3">
+								<img ng-src="{{data.get.img}}" alt="" class="img-responsive">
+							</div>
+						</div>
+						<hr>
+						<img ng-src="{{data.get.detail}}" alt="" class="img-responsive center-block">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-danger" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>	
+
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-messages.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/activity.js"></script>
+</body>
+</html>

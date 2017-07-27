@@ -1,0 +1,8 @@
+@media (min-width:768px){
+	.modal-sm{
+		width: 480px;
+	}
+}
+#edui_fixedlayer{
+	z-index: 2000 !important;
+}

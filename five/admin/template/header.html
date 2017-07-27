@@ -1,0 +1,17 @@
+<nav class="navbar navbar-inverse navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+			<div class="navbar-brand">
+				<span class="glyphicon glyphicon-user"></span>
+				<span ng-bind="getuser.name"></span> &nbsp;&nbsp;
+				<span ng-bind-template="{{getuser.level}}" class="small"></span>
+			</div>
+			<p class="navbar-text">
+				<button class="btn btn-sm" ng-click="quit()" ng-show="showLogin">退出</button>
+				<button class="btn btn-sm" data-toggle="modal" data-target="#login_modal" ng-show="!showLogin">登录</button>
+			</p>
+			
+			
+		</div>
+	</div>
+</nav>

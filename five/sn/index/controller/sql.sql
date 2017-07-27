@@ -1,0 +1,7 @@
+/*创建新闻表*/
+CREATE TABLE IF NOT EXISTS think_news(
+id INT PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(24),
+abstract VARCHAR(50),
+content TEXT
+)ENGINE INNODB;

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="newsApp">
+<head>
+	<meta charset="UTF-8">
+	<title>新闻中心</title>
+	<link rel="shortcut icon" href="logo.ico">
+	<link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/activity.css">
+	<style>
+		.header_nav ul>li:nth-of-type(2){
+			color: #812f2a;
+			font-weight: 800
+		}
+	</style>
+</head>
+<body ng-controller="NewsController">
+<!-- 加载页头 -->
+	<div class="container" ng-include="'template/header.html'"></div>
+	<div>
+		<div style="text-align: center;position: fixed;width: 300px;z-index: 2000;background-color: #333;left: 0;right: 0;top:0;bottom: 0;margin: auto;height: 250px;padding-top: 20px;opacity: 0.8;border-radius: 20px;" class="loading" ng-hide="loaded">
+			<img src="img/loading.gif" alt="">
+		</div>
+	</div>
+	<hr style="margin-top: 0">
+<!-- 面包屑导肮 -->
+<!-- 	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="index.html">首页</a></li>
+			<li class="avtive">服务指南</li>
+		</ol>
+	</div> -->
+
+<!-- news -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3">
+				<div class="list-group">
+					<a href="" class="list-group-item active"> 新闻中心</a>
+					<a href="" class="list-group-item"> 招商中心</a>
+					<a href="" class="list-group-item"> 社区活动</a>
+					<a href="" class="list-group-item"> 关于我们</a>
+				</div>
+			</div>
+			<div class="col-xs-9">
+				<div class="page-header" style="border-bottom: 1px solid #eee;margin-top: 0">
+					<h3 class="text-left">新闻动态</h3>
+				</div>	
+
+				<div class="media new_list" ng-repeat="x in data">
+					<div class="media-left">
+						<img  alt="" class="media-object" width="100px" ng-src="{{x.img}}">
+					</div>
+					<div class="media-body">
+						<h3 class="media-heading" ng-bind="x.title"></h3>
+						<div class="remark">
+							<div class="text-center pull-right date">
+								<h3 ng-bind-template="{{x.time | date:'hh'}}"></h3>
+								<div ng-bind-template="{{x.time | date:'yyyy-MM'}}"></div>
+							</div>
+							<p ng-bind-template="{{x.describe}}"></p>
+						</div>
+
+					</div>
+				</div>			
+			</div>
+		</div>
+	</div>
+
+	<footer ng-include="'template/footer.html'"></footer>
+
+
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-messages.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/news.js"></script>
+</body>
+</html>

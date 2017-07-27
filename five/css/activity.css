@@ -1,0 +1,33 @@
+.activity_item{
+	padding-left: 88px;
+	padding-right: 88px
+}
+
+.servicedown{
+	margin-bottom: 0;
+}
+.servicedown ul>li{
+	list-style-type: disc;
+	color: #812f2a;
+	border-bottom: 1px solid #ccc;
+	list-style-position: inside;
+	height: 32px;
+	line-height: 32px;
+}
+.servicedown ul>li a{
+	color: #333;
+}
+.list-group-item.active{
+    background-color: #812f2a;
+    border-color: #812f2a;
+}
+
+.new_list{
+	border-bottom: #ddd solid 1px;
+	margin-bottom: 20px
+}
+.new_list .remark .date{
+	background: #ddd;
+	padding:0px 10px;
+	margin-left: 20px
+}

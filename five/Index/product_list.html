@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="listApp">
+<head>
+	<meta charset="UTF-8">
+	<title>招商中心</title>
+	<link rel="shortcut icon" href="logo.ico">
+	<link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/product_list.css">
+	<style type="text/css">
+		.header_nav ul>li:nth-of-type(5){
+			color: #812f2a;
+			font-weight: 800
+		}
+	</style>
+</head>
+<body>
+<!-- 加载页头 -->
+	<div class="container" ng-include="'template/header.html'"></div>
+	<div ng-controller="ListController">
+		<div style="text-align: center;position: fixed;width: 300px;z-index: 2000;background-color: #333;left: 0;right: 0;top:0;bottom: 0;margin: auto;height: 250px;padding-top: 20px;opacity: 0.8;border-radius: 20px;" class="loading" ng-hide="loaded">
+			<img src="img/loading.gif" alt="">
+		</div>
+	</div>
+<!-- 面包屑导肮 -->
+<!-- 	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="index.html">首页</a></li>
+			<li class="avtive">服务指南</li>
+		</ol>
+	</div> -->
+
+<!-- 产品列表 -->
+	<img src="img/product/banner.jpg" alt="" class="img-responsive center-block">
+	<div class="container product_list" ng-controller="ListController">
+		<div class="page-header">
+			<h2>
+				<span><img src="img/header_left.png" alt=""></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;投资项目&nbsp;&nbsp;&nbsp;&nbsp;
+				<span><img src="img/header_right.png" alt=""></span>
+			</h2>
+		</div>
+		<div class="row">
+			<div class="col-xs-3" ng-repeat="x in data">
+				<div class="thumbnail">
+					<img ng-src="{{x.img}}" alt="">
+					<div class="caption text-center">
+						<h4 ng-bind="x.name"></h4>
+						<p><a ng-href="{{'product.html?id='+x.id}}" class="btn btn-danger" target="_blank">我要入驻</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="page-header">
+			<h2>
+				<span><img src="img/header_left.png" alt=""></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;投资环境&nbsp;&nbsp;&nbsp;&nbsp;
+				<span><img src="img/header_right.png" alt=""></span>
+			</h2>
+		</div>
+		<div class="well well-sm">
+			产业政策
+		</div>
+		<div class="row">
+			<div class="col-xs-6">
+				<img alt="" class="img-responsive center-block" id="img" src="img/product/li_left.jpg">
+			</div>
+			<div class="col-xs-6 auto_center">
+				<p>项目用地位于长江南路668号范围内，总占地面积为24770平方米，东北侧为长江南路，南侧为淞南八村，西侧为长江二中和都市花园居住小区。
+				该地块由原淞南经济开发区用地、淞南资产公司下属振华电机厂用地及振新实业公司仓库用地三块合并组成，地块内的房屋建筑由于年久失修，环境脏、乱、差。目前基地动迁工作已完成。</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<footer ng-include="'template/footer.html'" scope="" onload=""></footer>
+
+
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-messages.min.js"></script>
+	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/product_list.js"></script>
+</body>
+</html>

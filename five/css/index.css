@@ -1,0 +1,33 @@
+.news_title{
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+.news .panel-body{
+	padding:0 0 10px 0; 
+}
+.news .panel-body p,.news .panel-body h4{
+	padding-left: 10px;padding-right: 10px
+}
+.news .pull-right{
+	background: #eee;
+	padding: 10px 10px 0 10px;
+	/*margin-right: 10px*/
+}
+.news .media-body{
+	border-bottom: 1px solid #eee;
+}
+.product .more{
+	height: 224px;background: #812f2a;
+	color: #fff;
+	line-height: 224px;
+	display: block;
+	text-align: center;
+	font-size: 20px
+}
+.product .thumbnail{
+	padding: 0;
+}
+.header_nav .nav>li:last-of-type{
+	color: #812f2a;
+	font-weight: 800
+}

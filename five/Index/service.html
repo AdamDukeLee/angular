@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="serviceApp">
+<head>
+	<meta charset="UTF-8">
+	<title>服务指南</title>
+	<link rel="shortcut icon" href="logo.ico">
+	<link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/activity.css">
+	<style type="text/css">
+		.header_nav ul>li:nth-of-type(4){
+			color: #812f2a;
+			font-weight: 800
+		}
+	</style>
+</head>
+<body>
+<!-- 加载页头 -->
+	<div class="container" ng-include="'template/header.html'"></div>
+	<div ng-controller="DownController">
+		<div style="text-align: center;position: fixed;width: 300px;z-index: 2000;background-color: #333;left: 0;right: 0;top:0;bottom: 0;margin: auto;height: 250px;padding-top: 20px;opacity: 0.8;border-radius: 20px;" class="loading" ng-hide="loaded">
+			<img src="img/loading.gif" alt="">
+		</div>
+	</div>
+<!-- 面包屑导肮 -->
+<!-- 	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="index.html">首页</a></li>
+			<li class="avtive">服务指南</li>
+		</ol>
+	</div> -->
+
+<!-- 下载 -->
+	<img src="img/activity/service.jpg" alt="" class="img-responsive center-block">
+	<div class="jumbotron servicedown" ng-controller="DownController">
+		<div class="container">
+			<ul>
+				<li ng-repeat="x in data"><a ng-href="{{x.link}}" download="{{x.name}}" target="_blank">{{x.name}}</a></li>
+			</ul>
+			
+		</div>
+	</div>
+	<footer ng-include="'template/footer.html'"></footer>
+
+
+
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-messages.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="./js/service.js"></script>
+</body>
+</html>

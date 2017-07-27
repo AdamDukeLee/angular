@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="prouductApp">
+<head>
+	<meta charset="UTF-8">
+	<title ng-controller="ProductController">产品详情-{{product.title}}</title>
+	<link rel="shortcut icon" href="logo.ico">
+	<link rel="stylesheet" href="js/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/product.css">
+</head>
+<body ng-controller="ProductController">
+<!-- 加载页头 -->
+	<div class="container" ng-include="'template/header.html'"></div>
+<!-- 面包屑导肮 -->
+	<div class="container">
+		<ol class="breadcrumb">
+			<li><a href="index.html">首页</a></li>
+			<li class="avtive">详情</li>
+		</ol>
+	</div>
+
+<!-- 控制器+产品选择 -->
+	<div class="container">
+	<!-- 加载时候的图标 -->
+	<div style="text-align: center;position: fixed;width: 300px;z-index: 2000;background-color: #333;left: 0;right: 0;top:0;bottom: 0;margin: auto;height: 250px;padding-top: 20px;opacity: 0.8;border-radius: 20px;" class="loading" ng-hide="loaded">
+		<img src="img/loading.gif" alt="">
+	</div>
+		<div class="row" style="border:1px solid #ddd;margin: 0">
+			<div class="col-xs-5" style="padding-left:0">
+				<img src="img/pc-product.png"  alt="" ng-hide="imgloaded" class="img-responsive">
+				<img ng-src="{{product.img}}"  alt="" ng-show="imgloaded" class="img-responsive">
+			</div>
+			<div class="col-xs-7">
+				<h2 ng-bind="product.title"></h2>
+				<h4>
+					<span><img src="img/product/icon_1.jpg" alt="" width="16px"></span>&nbsp;
+					<span class="small text-muted">占地面积： </span><span ng-bind="product.area"></span>m&sup2;</h4>
+				<h4>
+					<span><img src="img/product/icon_2.jpg" alt="" width="16px">&nbsp;
+					</span><span class="small text-muted">产地特色： </span><span ng-bind="product.feature"></span></h4>
+				<h4>
+					<span><img src="img/product/icon_3.jpg" alt="" width="16px">&nbsp;
+					</span><span class="small text-muted">园区地址： </span><span ng-bind="product.addr"></span></h4>
+				<h4>
+					<span><img src="img/product/icon_4.jpg" alt="" width="16px">&nbsp;
+					</span><span class="small text-muted">联系方式： </span><span ng-bind="product.contact"></span></h4>
+				<br>
+				<h4><button type="button" class="btn btn-danger btn-lg join">我要入驻</button></h4>
+			</div>
+		</div>
+<!-- 产品详情 -->
+		<div class="page-header text-center">
+			<h2>
+				<span><img src="img/header_left.png" alt=""></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;产品详情&nbsp;&nbsp;&nbsp;&nbsp;
+				<span><img src="img/header_right.png" alt=""></span></h2>
+		</div>
+		<img ng-src="{{product.detail_img}}" alt="" class="img-responsive center-block">
+	</div>
+
+<!-- 投资项目需求登记 -->
+	<div class="apply_from">
+		<div class="page-header text-center" style="border-bottom: 0">
+			<h2>
+				<span><img src="img/header_left.png" alt=""></span>
+				&nbsp;&nbsp;&nbsp;&nbsp;投资项目需求登记&nbsp;&nbsp;&nbsp;&nbsp;
+				<span><img src="img/header_right.png" alt=""></span></h2>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-6 explain text-center">
+					<h2> 我有意向投资项目<br>我要推荐投资项目</h2>
+					<h4>  提交您的投资项目需求，我们会尽快与您联系</h4>
+				</div>
+				<div class="col-xs-6">
+					<form class="form-horizontal" name="apply_from">
+						<div class="form-group">
+							<label class="control-label col-xs-1 text-center">
+								<img src="img/product/icon_5.jpg" alt="" width="18px">
+							</label>
+							<div class="col-xs-8">
+								<input type="text" class="form-control" placeholder="请输入您的称呼" 
+								name="a_name" ng-model="apply.name" required maxlength="20" >
+								<div class="help-block" ng-messages="apply_from.a_name.$error" 
+								ng-show="apply_from.a_name.$dirty && apply_from.a_name.$touched">
+									<span ng-message="required">称呼不能为空</span>
+									<span ng-message="maxlength">字符长度不能超过20</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-xs-1 text-center">
+								<img src="img/product/icon_6.jpg" alt="" width="18px">
+							</label>
+							<div class="col-xs-8">
+								<input type="text" class="form-control" placeholder="请输入您的联系方式"
+								name="a_contact" ng-model="apply.contact" ng-pattern="/^[0-9]*$/"
+								required maxlength="11" minlength="7" 
+								>
+								<div class="help-block" ng-show="apply_from.a_contact.$dirty && apply_from.a_contact.$touched" ng-messages="apply_from.a_contact.$error">
+									<span ng-message="required">联系方式不可以为空</span>
+									<span ng-message="pattern">联系方式必须是数字</span>
+									<span ng-message="maxlength">联系方式必须是11位手机号</span>
+									<span ng-message="minlength">联系方式必须是11位手机号</span>
+									<span></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-xs-1 text-center">
+								<img src="img/product/icon_7.jpg" alt="" width="18px">
+							</label>
+							<div class="col-xs-8">
+								<input type="text" class="form-control" placeholder="项目信息名称" name="a_project"
+								ng-model="apply.project" required maxlength="50">
+								<div class="help-block" ng-messages="apply_from.a_project.$error" 
+								ng-show="apply_from.a_project.$dirty && apply_from.a_project.$touched">
+									<span ng-message="required">项目名称不能为空</span>
+									<span ng-message="maxlength">项目名称不能多余50个字符</span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-xs-1 text-center">
+								<img src="img/product/icon_8.jpg" alt="" width="18px">
+							</label>
+							<div class="col-xs-8">
+								<textarea class="form-control" rows="5" placeholder="请简述要描述您的项目" 
+								ng-model="apply.require" required name="a_require" maxlength="300"></textarea>
+								<div class="help-block" ng-messages="apply_from.a_require.$error" 
+								ng-show="apply_from.a_require.$dirty && apply_from.a_require.$touched">
+									<span ng-message="required">项目描述不可以为空</span>
+									<span ng-message="maxlength">项目描述不可以超过300个字符</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-xs-8 col-xs-offset-1 text-center">
+								<button type="button" class="btn btn-danger" ng-disabled="apply_from.$invalid">&nbsp;&nbsp;&nbsp;提交&nbsp;&nbsp;&nbsp;</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<footer ng-include="'template/footer.html'"></footer>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/angular-messages.min.js"></script>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/product.js"></script>
+</body>
+</html>

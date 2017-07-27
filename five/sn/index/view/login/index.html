@@ -1,0 +1,35 @@
+{layout name="template/layout" /}
+<div class="center-block" style="margin-top:50px;width:600px" >
+	<div class="well">
+		<h3 class="text-center text-muted">网站后台管理系统</h3>
+		<form action="{:url('Login/index')}" method="post" class="form-horizontal" >
+			<div class="form-group">
+				<label class="control-label col-md-2">用户：</label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" name="name" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">密码：</label>
+				<div class="col-md-9">
+					<input type="password" class="form-control" name="password" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-md-2">验证码：</label>
+				<div class="col-md-5">
+					<input type="text" class="form-control" name="code" />
+				</div>
+				<div class="col-md-4">
+					<img src="{:captcha_src()}?id=" alt="" height="37px" class="img-thumbnail" onclick="this.src=this.src+1" />
+					<h5 class="text-center">点击图片刷新验证码</h5>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2">
+					<input type="submit" value="登录" class="btn btn-success btn-lg" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

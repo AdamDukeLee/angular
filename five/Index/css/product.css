@@ -1,0 +1,15 @@
+.apply_from{
+	background: #f8f8f8;
+	padding-top: 1px;
+	padding-bottom: 20px
+}
+.apply_from .col-xs-1{
+	padding-left: 0;
+	padding-right: 0;
+}
+.apply_from .explain{
+	height: 318px;
+	background: url(../img/product/men_img.png) no-repeat bottom;
+	background-size: 320px;
+	padding-top: 56px
+}
